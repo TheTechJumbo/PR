@@ -8,6 +8,7 @@ contracts=[]
 cases=[]
 chargers=[]
 totalPrice=0
+endPrice=0
 repeatPurchase="YES"
 while repeatPurchase=="YES":
 	#choose a phone or tablet
@@ -75,13 +76,18 @@ while repeatPurchase=="YES":
 	totalPrice+=currentPrice
 	print()
 	print("The total cost of your basket is £"+str(totalPrice))
-
-#Task 2
+	devNum=len(devices)
+#Task 2 and Task 3
 	repeatPurchase="a"
 	while repeatPurchase != "YES" and repeatPurchase != "NO":
 		repeatPurchase=input("Would you like to buy any additional devices? Answer with 'YES' or NO': ")
 		print()
 	if repeatPurchase == "NO":
+		if devNum>0:
+			for item in range((devNum)-1):
+				item+=1
+				devPrice=(prices[devices[item]])*0.9
+				endPrice+=devPrice
+			endPrice+=(prices[devices[0]])
 		break
-print("The total cost of your basket is £"+str(totalPrice))
-
+print("The total cost of your basket is £"+str(endPrice))
