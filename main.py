@@ -2,7 +2,7 @@
 primaryKey=["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTLM", "YTLM", "YTLL", "SMNO", "SMPG", "CSST", "CSLX", "CGCR", "CGHM", "BOTH"]
 categories=["Phone", "Phone", "Phone", "Phone", "Phone", "Phone", "Tablet","Tablet", "Tablet", "Tablet", "Sim", "Sim", "Case", "Case", "Charger", "Charger", "Charger"]
 descriptions=["Compact", "Clam Shell", "RoboPhone – 5-inch screen and 64 GB memory", "RoboPhone – 6-inch screen and 256 GB memory", "Y-Phone Standard – 6-inch screen and 64 GB memory", "Y-Phone Deluxe – 6-inch screen and 256 GB memory", "RoboTab – 8-inch screen and 64 GB memory", "RoboTab – 10-inch screen and 128 GB memory", "Y-Tab Standard – 10-inch screen and 128 GB memory", "Y-Tab Deluxe – 10-inch screen and 256 GB memory", "SIM Free contract", "Pay As You Go contract", "Standard case", "Luxury case", "Car charger", "Home charger", "Both chargers"]
-prices=[29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99,0.00, 9.99, 0.00, 50.00, 19.99, 15.99, 35.98]
+prices=[29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99, 0.00, 9.99, 0.00, 50.00, 19.99, 15.99, 35.98]
 devices=[]
 contracts=[]
 cases=[]
@@ -36,7 +36,7 @@ while repeatPurchase=="YES":
 		print()
 		deviceDec=input("From the above list, enter the item code for the device that you want to purchase: ")
 	deviceIdx=primaryKey.index(deviceDec)
-	devices.append(deviceIdx)
+	devices.append(deviceIdx) 
 	print()
 
 	#allow phone customers to choose whether the phone will be SIM Free or Pay As You Go
@@ -77,6 +77,7 @@ while repeatPurchase=="YES":
 	print()
 	print("The total cost of your basket is £"+str(totalPrice))
 	devNum=len(devices)
+
 #Task 2 and Task 3
 	repeatPurchase="a"
 	while repeatPurchase != "YES" and repeatPurchase != "NO":
@@ -87,7 +88,8 @@ while repeatPurchase=="YES":
 			for item in range((devNum)-1):
 				item+=1
 				devPrice=(prices[devices[item]])*0.9
-				endPrice+=devPrice
+				endPrice=devPrice+prices[contracts[item]]+prices[cases[item]]+prices[chargers[item]]
+				print(endPrice)
 			endPrice+=(prices[devices[0]])
 		break
 print("The total cost of your basket is £"+str(endPrice))
